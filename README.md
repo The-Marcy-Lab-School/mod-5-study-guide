@@ -1,4 +1,5 @@
-# mod-5-study-guide
+# Mod-5-study-guide
+
 OOP-study guide for object-oriented programming.
 
 ## The `this` keyword
@@ -32,7 +33,7 @@ person1.speak(); // My name is Itzel and I have green eyes and purple hair
 person2.speak(); // My name is Gonzalo and I have blue eyes and red hair
 ```
 
-We also use `this` when making a `class` inside the constructor function. 
+We also use `this` when making a `class` inside the constructor function.
 
 When we use the `new` keyword in a class constructor, `this` becomes the object returned by the constructor
 
