@@ -1,0 +1,14 @@
+{
+  "name": "mod-5-study-guide",
+  "version": "1.0.0",
+  "description": "OOP-study guide for object-oriented programming.",
+  "main": "playground.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "nodemon": "^3.1.4"
+  }
+}
