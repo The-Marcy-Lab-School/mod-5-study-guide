@@ -54,6 +54,7 @@ const person1 = new Person("ben", "brown", "black");
 What is it?
 
 Here are some of the main points:
+
 * Two functions: inner and outer
 * Outer function doesn't have access to inner
 * Inner function has access to outer
@@ -61,6 +62,7 @@ Here are some of the main points:
 Why is it useful?
 
 * Allows us to have private data
+* Functions can reference data outside of it's scope
 
 Example
 
@@ -78,7 +80,7 @@ const outer = () => {
 }
 
 const innerFunc = outer();
-innerFunc(); 
+innerFunc(); //true
 
 
 const makeAdder = (numToAdd) => {
@@ -107,23 +109,25 @@ A factory function is a regular function that returns an object. It can encapsul
 
 Why is it useful?
 
-Encapsulation: Factory functions can encapsulate the object creation logic, keeping the code organized and easier to manage. They can hide the complexities of object creation and initialization.
+Factory functions can encapsulate the object creation logic, keeping the code organized and easier to manage. This helps to make a consistent and predictable interface
 
-Avoids new Keyword: Factory functions do not require the use of the new keyword, which can be a source of errors (e.g., forgetting to use new with constructors).
-
-Flexibility: Factory functions can return different types of objects based on conditions, making them more flexible compared to constructors.
+They can also return different types of objects based on conditions, making them more flexible compared to constructors.
 
 Simplified Inheritance: By using factory functions, you can use object composition over inheritance, which can lead to more flexible and maintainable code.
 
-No this Binding Issues
+No `this` binding issues
 
-Example
+Example:
+
+```js
 
 const createCar = (make, model, year) => ({
     make,
     model,
     year,
-    getCarInfo: function() return `${year} ${make} ${model}`,
+    getCarInfo: function() {
+      return `${year} ${make} ${model}`
+    },
     startEngine: function() {
         console.log(`${this.getCarInfo()} engine started.`);
     }
@@ -135,8 +139,19 @@ const car2 = createCar('Honda', 'Civic', 2020);
 car1.startEngine(); // 2021 Toyota Corolla engine started.
 car2.startEngine(); // 2020 Honda Civic engine started.
 
+```
+
 ## Constructor Functions
 
+What is it
+
+When using prototype-based methods, we generally move away from factory functions to constructor functions or classes. However, we can still simulate a factory function style by using a helper function to manage prototype methods.
+
+Why is it useful
+
+Using prototype-based methods with constructor functions provides significant advantages in terms of memory efficiency, performance, consistency, and scalability. By simulating a factory function style with a helper function, you can combine the ease of use of factory functions with the performance benefits of prototypes.
+
+```js
 // Using the constructor function.
 
 const Car = function(make, model, year) {
@@ -158,7 +173,7 @@ const car2 = new Car('Honda', 'Civic', 2020);
 
 car1.startEngine(); // 2021 Toyota Corolla engine started.
 car2.startEngine(); // 2020 Honda Civic engine started.
-
+```
 
 ## ES6 Classes
 
@@ -168,10 +183,11 @@ Classes in ES6+ provide a more concise and clear syntax for creating constructor
 
 Why is it useful?
 
-
+Better readability, easier to write
 
 Example
 
+```js
 class Car {
     constructor(make, model, year) {
         this.make = make;
@@ -193,6 +209,7 @@ const car2 = new Car('Honda', 'Civic', 2020);
 
 car1.startEngine(); // 2021 Toyota Corolla engine started.
 car2.startEngine(); // 2020 Honda Civic engine started.
+```
 
 ## Inheritance
 
@@ -202,6 +219,7 @@ Inheritance defines a relationship between two classes, a superclass (parent cla
 `super()` invokes the superclass constructor, setting properties on `this`
 
 Inheritance is useful because:
+
 * It helps keep our code DRY by not having to repeat methods in the superclass
 
 Example:
